@@ -23,6 +23,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/">
+            {/*<Route index element= { currentUser ? <Home /> : <Login /> } />*/}
             <Route index element = {
                 <ProtectedRoute>
                     <Home />
