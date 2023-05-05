@@ -12,6 +12,8 @@ const Register = () => {
 
     const [error,setError] = useState(false);
     const navigate = useNavigate();
+    const [file, setFile] = useState('');
+
 
     const onHandleSubmit = async (e) => {
         e.preventDefault(); // prevents the button from refreshing the page.
@@ -100,13 +102,24 @@ const Register = () => {
                     <input type="text" placeholder = "Display name" />
                     <input type="email" placeholder = "Email" />
                     <input type="password" placeholder = "Password" />
-                    <input style={{display: "none"}} type="file" id="file" />
+                    <input style={{display: "none"}} type="file" id="file"
+                           onChange={(e) => { console.log(e.target.files);
+                               setFile(e.target.files[0])
+                           } }
+
+                    />
                     <label htmlFor="file">
-                        <img style={{width: "32px"}}  src={Add} alt="" />
+                        {console.log(file)}
+                        <img style={{width: "40px", borderRadius: "50px"}}  src={
+                            file
+                                ? URL.createObjectURL(file)
+                                : Add
+                        } alt=""
+                        />
                         <span>Add Image</span>
                     </label>
                     <button style={{cursor: "pointer"}} >Sign up</button>
-                    {error && <span> Something went wrong</span>}
+                    {error && <span style={{color: "red"}}> Enter Correct details</span>}
                 </form>
                 <p>Already have an account? <Link to="/login"> Login </Link></p>
 

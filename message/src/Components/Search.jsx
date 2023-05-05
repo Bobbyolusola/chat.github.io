@@ -83,7 +83,7 @@ const Search = () => {
             }
         } catch (error) {}
         setUser(null);
-        setUsername (" ");
+        // setUsername (" ");
     };
 
     return (
@@ -95,10 +95,10 @@ const Search = () => {
                         placeholder='Search a user'
                         onKeyDown={handleKey}
                         onChange={ (e)=> setUsername(e.target.value)}
-                        value={username}
+                        // value={username}
                     />
                 </div>
-                {error && <span>User not found!</span>}
+                {error && <span style={{color: "red"}}>User not found!</span>}
                 {/*handleSelect will add userChats collection into database */}
                 {/*and also create chats collection where all chats are stored.*/}
                 {user && <div className="userChat" onClick={handleSelect}>

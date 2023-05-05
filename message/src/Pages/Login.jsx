@@ -38,7 +38,7 @@ const Login = () => {
                     <input type="password" placeholder = "Password" />
 
                     <button style={{cursor: "pointer"}}>Sign In</button>
-                    {error && <span> Incorrect email or password</span>}
+                    {error && <span style={{color: "red"}}> Incorrect email or password</span>}
 
                 </form>
                 <p>You don't have an account? <Link to="/register"> SignUp </Link></p>

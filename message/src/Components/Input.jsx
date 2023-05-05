@@ -42,11 +42,11 @@ const Input = () => {
                     }
                 },
 
-                (error)=> {
+                (error) => {
                     // setError(true)
                 },
                 () => {
-                    getDownloadURL(uploadTask.snapshot.ref).then( async(downloadURL) => {
+                    getDownloadURL(uploadTask.snapshot.ref).then(async (downloadURL) => {
                         await updateDoc(doc(db, "chats", data.chatId), {
                             messages: arrayUnion({
                                 id: uuid(),
@@ -71,13 +71,13 @@ const Input = () => {
             });
         }
 
-        await updateDoc(doc(db, "userChats", currentUser.uid),{
+        await updateDoc(doc(db, "userChats", currentUser.uid), {
             [data.chatId + ".lastMessage"]: {
                 text,
             },
             [data.chatId + ".date"]: serverTimestamp(),
         });
-        await updateDoc(doc(db, "userChats", data.user.uid),{
+        await updateDoc(doc(db, "userChats", data.user.uid), {
             [data.chatId + ".lastMessage"]: {
                 text,
             },
@@ -86,7 +86,9 @@ const Input = () => {
 
         setText("");
         setImg(null);
+
     };
+
 
     return (
         <div className="input">
@@ -104,7 +106,8 @@ const Input = () => {
                 <label htmlFor="file">
                     <img src={image} alt="" />
                 </label>
-                <button onClick={handleSend}>Send</button>
+                <button
+                    onClick={handleSend}>Send</button>
             </div>
         </div>
     )
